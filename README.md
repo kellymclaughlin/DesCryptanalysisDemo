@@ -37,6 +37,6 @@ The project can be built with ant using the provided build.xml file.
 ## TODO
 I'll soon have this code running somewhere publicly available.
 
-[1] Eli Biham, Adi Shamir: Differential Cryptanalysis of DES-like Cryptosystems. CRYPTO 1990: 2-21
-[2] Eli Biham: Tutorial on Differenetial Cryptanalysis, 2005
-[3] Menezes, A. J., van Oorschot, P. C., and Vanstone, S. A. Handbook of Applied Cryptography. CRC Press, 1997
+* [1] Eli Biham, Adi Shamir: Differential Cryptanalysis of DES-like Cryptosystems. CRYPTO 1990: 2-21
+* [2] Eli Biham: Tutorial on Differenetial Cryptanalysis, 2005
+* [3] Menezes, A. J., van Oorschot, P. C., and Vanstone, S. A. Handbook of Applied Cryptography. CRC Press, 1997
