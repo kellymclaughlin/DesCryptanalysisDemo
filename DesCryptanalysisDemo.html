@@ -5,108 +5,87 @@
 <meta http-equiv="Content-Type"  content="text/html; charset=utf-8" />
 </head>
 <body>
-	<font face="Arial">
-	
-		<table border="2" align="center" bgcolor="gray" cellpadding="10">
-			<tr><th><h1>DES Cryptanalysis Demonstration</h1></th>		
-	  	</tr>	
-		</table>	
-	
-	<br />
-	<br />
-	
-	<h4>Background</h4>	
-	
-	
-		<p>
-			This page has two applets that present an implementation of a cryptanalytic attack against 6-round DES. An attack on 6-round DES is a probabilistic attack.
-			By testing a significant number of plaintext/ciphertext pairs, many of the key bits become statistically apparent. This attack centers on the use of 
-			characteristics. Please see [1] for a thorough discussion of characteristics as they apply to differential cryptanalysis. 
-			Using the properties of the characteristics and the known output from the last DES encryption round for each pair of inputs, it is possible to work backwards 
-			to determine the key bits that were XORed with the right-hand side of the output of the previous round to form the SBox input. 
-			In this case, I use two characteristics that allow the determination of 30 of the 56 key bits each (excluding parity bits).  This corresponds to the input
-			to 5 different SBoxes. Unfortunately 3 of the SBoxes (18 bits) for each characteristic overlap which leaves 42 bits that are known and 14 bits yet to determine. 			
-			From this point, however, it is very simple to exhaustively search the remaining 2^14 possibilities and	determine the correct key. 
-		</p>
-	
-			
-	
-		<p>			
-			In researching this project, most of the references contained a high level description of the cryptanalysis on reduced round DES, but there were enough details missing to 
-			make it unclear as to how the attack could actually be implemented. This project is an attempt to show an implementation of the attack that fills in some of the gaps left by
-			other sources for the student who is new to this subject area.			
-		</p>
-	
-		<p>
-			To implement this attack, I first implemented the DES algorithm as described in [1]. The implementation of the cryptanalysis followed after
-			much studying of [2] and [3]. Click <a href="./javadoc/index.html">here</a> to view the javadoc documentation for the implementation classes. 	
-		</p>
-	
-	<br />
-	
-	
-		<h4>Applet Instructions</h4>
-			
-		<p>
-			To use this applet, first use the DES Ciphertext/Plaintext Generation Applet to produce input for the DES Cryptanalysis applet. 
-			Enter a valid DES key in the key field or press the 'Generate Key' button to generate a DES key automatically. A DES key is a total of 64 bits,
-			 with the least significant bit of each byte being a parity bit. Each byte of the key should have odd parity. After entering or generating a DES 
-			 key, press the 'Generate Input Pairs' button to generate a set of input pairs. Copy the text output in the Plaintext/Ciphertext pairs box 
-			 by clicking in the box with the mouse and then pressing CTRL+A and then CTRL+C. Paste the copied text into the Plaintext/Ciphertext pairs box
-			 of the DES Cryptanalysis applet using the CTRL+V key sequence. Now press the 'Compute Key' button. The key display in the key box of the DES 
-			 Cryptanalysis applet should contain the same key from the key box of the DES Ciphertext/Plaintext Generation Applet.
-		</p>
-	
-		<table border="2" align="center" cellpadding="8">			
-			<tr>
-			    <td>
-			    	<applet archive="DesCryptanalysis.jar" code="DesInputGeneratorApplet.class" width="400" height="750">		    		
-			    		<b>Error! You must use a Java-enabled browser.</b>
-			    	</applet>
-			 		</td>
-			 		<td>
-			    	
-			    	<applet archive="DesCryptanalysis.jar" code="DesCryptanalysisApplet.class" width="400" height="750">		    					    		
-			    		<b>Error! You must use a Java-enabled browser.</b>
-			    	</applet>
-			 		</td>
-			</tr>		
-	 	</table>
-	
- 	<br />
- 	
- 	
- 		<p>
- 			The skeptical person may think that this applet may not actually perform any cryptanalysis, since the user must enter the key, and 
- 			it could just be copied from one applet to another, but an examination of the source code will show that this is not the case. Following is 
- 			a link to an archive of all of the source code for the implementation of the two applets. It can be observed that there is no 
- 			communication between the applets and that there is no public 'getter' method for the key in the implementation class of the 
- 			Plaintext/Ciphertext pair generation applet. Here is the link to the project on github: 
- 				<a href="https://github.com/kellymclaughlin/DesCryptanalysisDemo">DesCryptanalysisDemo</a> 				
- 		</p>
- 	
- 	<br />
- 	 	
- 		<h4>References</h4> 		 	 		 	
- 	
- 		<table>
- 			<tr>	 					
-	 			<td>
-	 				[1] Eli Biham, Adi Shamir: Differential Cryptanalysis of DES-like Cryptosystems. CRYPTO 1990: 2-21
-	 			</td>
-	 		</tr>
-	 		<tr>
-	 			<td>
-	 				[2] Eli Biham: Tutorial on Differential Cryptanalysis, 2005
-	 			</td>
-	 		</tr>
-	 		<tr>
-	 			<td>
-	 				[3] Menezes, A. J., van Oorschot, P. C., and Vanstone, S. A. Handbook of Applied Cryptography. CRC Press, 1997
-	 			</td>
-	 		</tr>
-	 	</table>	 			
-	 		
-</font>
+    <font face="Arial">
+      <table border="2" align="center" bgcolor="gray" cellpadding="10">
+        <tr><th><h1>DES Cryptanalysis Demonstration</h1></th>
+        </tr>
+      </table>
+      <br />
+      <br />
+      <h4>Background</h4>
+      <p>
+        This page has two applets that present an implementation of a cryptanalytic attack against 6-round DES. An attack on 6-round DES is a probabilistic attack.
+        By testing a significant number of plaintext/ciphertext pairs, many of the key bits become statistically apparent. This attack centers on the use of
+        characteristics. Please see [1] for a thorough discussion of characteristics as they apply to differential cryptanalysis.
+        Using the properties of the characteristics and the known output from the last DES encryption round for each pair of inputs, it is possible to work backwards
+        to determine the key bits that were XORed with the right-hand side of the output of the previous round to form the SBox input.
+        In this case, I use two characteristics that allow the determination of 30 of the 56 key bits each (excluding parity bits).  This corresponds to the input
+        to 5 different SBoxes. Unfortunately 3 of the SBoxes (18 bits) for each characteristic overlap which leaves 42 bits that are known and 14 bits yet to determine.
+        From this point, however, it is very simple to exhaustively search the remaining 2^14 possibilities and determine the correct key.
+      </p>
+      <p>
+        In researching this project, most of the references contained a high level description of the cryptanalysis on reduced round DES, but there were enough details missing to
+        make it unclear as to how the attack could actually be implemented. This project is an attempt to show an implementation of the attack that fills in some of the gaps left by
+        other sources for anyone who is new to this subject area.
+      </p>
+      <p>
+        To implement this attack, I first implemented the DES algorithm as described in [1]. The implementation of the cryptanalysis followed after
+        much studying of [2] and [3].
+        <!-- Click <a href="./javadoc/index.html">here</a> to view the javadoc documentation for the implementation classes.   -->
+      </p>
+      <br />
+      <h4>Applet Instructions</h4>
+      <p>
+        To use this applet, first use the DES Ciphertext/Plaintext Generation Applet to produce input for the DES Cryptanalysis applet.
+        Enter a valid DES key in the key field or press the 'Generate Key' button to generate a DES key automatically. A DES key is a total of 64 bits,
+        with the least significant bit of each byte being a parity bit. Each byte of the key should have odd parity. After entering or generating a DES
+        key, press the 'Generate Input Pairs' button to generate a set of input pairs. Copy the text output in the Plaintext/Ciphertext pairs box
+        by clicking in the box with the mouse and then pressing CTRL+A and then CTRL+C. Paste the copied text into the Plaintext/Ciphertext pairs box
+        of the DES Cryptanalysis applet using the CTRL+V key sequence. Now press the 'Compute Key' button. The key display in the key box of the DES
+        Cryptanalysis applet should contain the same key from the key box of the DES Ciphertext/Plaintext Generation Applet.
+      </p>
+      <table border="2" align="center" cellpadding="8">
+        <tr>
+          <td>
+            <applet archive="dist/lib/DesCryptanalysis.jar" code="DesInputGeneratorApplet.class" width="400" height="750">
+              <b>Error! You must use a Java-enabled browser.</b>
+            </applet>
+          </td>
+          <td>
+            <applet archive="dist/lib/DesCryptanalysis.jar" code="DesCryptanalysisApplet.class" width="400" height="750">
+              <b>Error! You must use a Java-enabled browser.</b>
+            </applet>
+          </td>
+        </tr>
+      </table>
+      <br />
+      <p>
+        The skeptical person may think that this applet may not actually perform any cryptanalysis, since the user must enter the key, and
+        it could just be copied from one applet to another, but an examination of the source code will show that this is not the case. Following is
+        a link to an archive of all of the source code for the implementation of the two applets. It can be observed that there is no
+        communication between the applets and that there is no public 'getter' method for the key in the implementation class of the
+        Plaintext/Ciphertext pair generation applet. Here is the link to the project on github:
+        <a href="https://github.com/kellymclaughlin/DesCryptanalysisDemo">DesCryptanalysisDemo</a>
+      </p>
+      <br />
+      <h4>References</h4>
+      <table>
+        <tr>
+          <td>
+            [1] Eli Biham, Adi Shamir: Differential Cryptanalysis of DES-like Cryptosystems. CRYPTO 1990: 2-21
+          </td>
+        </tr>
+        <tr>
+          <td>
+            [2] Eli Biham: Tutorial on Differential Cryptanalysis, 2005
+          </td>
+        </tr>
+        <tr>
+          <td>
+            [3] Menezes, A. J., van Oorschot, P. C., and Vanstone, S. A. Handbook of Applied Cryptography. CRC Press, 1997
+          </td>
+        </tr>
+      </table>
+    </font>
 </body>
 </html>
