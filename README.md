@@ -35,8 +35,8 @@ The project can be built with ant using the provided build.xml file.
 ## Cleaning
   `ant clean`
 
-## TODO
-I'll soon have this code running somewhere publicly available.
+## Try it out
+Thanks to the magic of github pages you can try it out [here](http://kellymclaughlin.github.com/DesCryptanalysisDemo/DesCryptanalysisDemo.html).
 
 ## References
 
